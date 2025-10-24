@@ -1,0 +1,2 @@
+# franka_control
+franka_control：用于docker镜像中已部署好的franka进行控制
