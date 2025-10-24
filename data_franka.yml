@@ -1,0 +1,33 @@
+nodes:
+  - id: camera_front
+    path: components/camera/main.py
+    inputs:
+      tick: dora/timer/millis/33
+    outputs:
+      - image
+    env:
+      DEVICE_SERIAL: f1371832
+      IMAGE_HEIGHT: 540
+      IMAGE_WIDTH: 960
+
+  - id: camera_wrist
+    path: components/camera/main.py
+    inputs:
+      tick: dora/timer/millis/33
+    outputs:
+      - image
+    env:
+      DEVICE_SERIAL: 336222072219
+      IMAGE_HEIGHT: 480
+      IMAGE_WIDTH: 640
+
+  - id: arm
+    path: components/arm/main.py
+    inputs:
+      tick: dora/timer/millis/33
+    outputs:
+      - jointstate
+    env:
+      url: http://127.0.0.2:5000/
+
+# 处理节点后续补充
