@@ -21,13 +21,20 @@ nodes:
       IMAGE_HEIGHT: 480
       IMAGE_WIDTH: 640
 
-  - id: arm
-    path: components/arm/main.py
+  - id: arm_get_data
+    path: components/arm_get_data/main.py
     inputs:
       tick: dora/timer/millis/33
     outputs:
       - jointstate
     env:
       url: http://127.0.0.2:5000/
-
+  - id: arm_control
+    path: components/arm_control/main.py
+    inputs:
+      arm_data: arm_get_data/jointstate
+    outputs:
+    
+    env:
+      url: http://127.0.0.2:5000/
 # 处理节点后续补充

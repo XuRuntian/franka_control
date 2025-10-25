@@ -19,11 +19,10 @@ def get_arm_data(url):
         joint_resp = requests.post(f"{url}getq", timeout=0.1)
         if joint_resp.status_code == 200:
             arm_data["jointstate"] = joint_resp.json()["q"]
-
         # 获取夹爪距离
         gripper_resp = requests.post(f"{url}get_gripper", timeout=0.1)
         if gripper_resp.status_code == 200:
-            arm_data["gripper_raw"] = gripper_resp.json()["gripper"]  # 暂存原始距离
+            arm_data["gripper"] = [gripper_resp.json()["gripper"]]
 
         # 获取末端位姿
         pose_resp = requests.post(f"{url}getpos_euler", timeout=0.1)
