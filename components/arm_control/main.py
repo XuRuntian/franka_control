@@ -58,7 +58,7 @@ def main():
                     print(f"警告：arm_data长度不足（实际{len(arm_data)}，需至少14）")
                     continue
 
-                ee_pose_euler = arm_data[-7:-1] 
+                ee_pose_euler = arm_data[8:] 
                 gripper = arm_data[7]
                 ee_pose_quat = euler2quat(ee_pose_euler)  
                 targe_pose = ee_pose_quat.copy() 
