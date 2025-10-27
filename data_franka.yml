@@ -37,4 +37,15 @@ nodes:
     
     env:
       url: http://127.0.0.2:5000/
-# 处理节点后续补充
+
+  - id: client_franka
+    path: src/client_franka_dora.py
+    inputs:
+      image_front: camera_front/image
+      image_wrist: camera_wrist/image
+      arm_data: arm_get_data/jointstate
+    outputs:
+      - data
+    env:
+      FRANKA_CONTROL_SERVER_URL: http://127.0.0.2:5000/
+      INFERENCE_SERVER_URL: http://172.16.17.77:8000/infer
